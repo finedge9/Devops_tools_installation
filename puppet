@@ -1,0 +1,44 @@
+PUPPET INSTALLATION ON UBUNTU
+Installing Puppet Master
+Step 1: Run the following commands for installing Puppet Master
+$ sudo apt-get update
+$ sudo apt-get install wget
+$ wget https://apt.puppetlabs.com/puppet-release-bionic.deb
+$ sudo dpkg -i puppet-release-bionic.deb
+$ sudo apt-get update
+$ apt policy puppet master
+$ sudo apt-get install puppet-master
+Installing Puppet Agent
+Step 2: Run the following commands for installing Puppet Agent
+$ sudo apt-get update
+$ sudo apt-get install wget
+$ wget https://apt.puppetlabs.com/puppet-release-bionic.deb
+$ sudo dpkg -i puppet-release-bionic.deb
+$ sudo apt-get update
+$ apt policy puppet master
+$ sudo apt-get install puppet
+Configuring Puppet Master
+Step 1: Add the following lines in the puppet-master configuration file
+$ sudo nano /etc/default/puppet-master
+JAVA_ARGS="-Xms512m Xmx512m"
+//Add this Line
+$ sudo systemctl restart puppet-master
+Step 2: Next open port 8140 on the Puppet Master’s firewall
+$ sudo ufw allow 8140/tcp
+Step 3: Make changes to the hosts file which exists in /etc/hosts. And add the Puppet
+Master IP address along with the name “puppet”
+$ sudo nano /etc/hosts
+Step 4: Create the following directory path:
+$ sudo mkdir -p /etc/puppet/code/environments/production/manifests
+Configuring Puppet Slave
+Step 1: Add the entry for Puppet Master in /etc/hosts
+Step 2: Finally start the Puppet agent by using the following command. Also, enable the
+service, so that it starts when the computer starts
+$ sudo systemctl start puppet
+$ sudo systemctl enable puppet
+On Master
+Step 1: Type the following command,
+$ sudo puppet cert list
+Step 2: Finally, sign the listed certificate using the following command:
+$ sudo puppet cert sign --all
+You are now ready to use the Puppet cluster!
