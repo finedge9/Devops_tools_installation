@@ -1,0 +1,31 @@
+Steps for Both Master and Slave
+Step 1: Run the following commands for installing kubeadm as root
+$ apt-get update
+$ apt-get install docker.io
+$ apt-get update && apt-get install -y apt-transport-https curl
+$ curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg |
+apt-key add -
+$ cat <<EOF >/etc/apt/sources.list.d/kubernetes.list
+deb https://apt.kubernetes.io/ kubernetes-xenial main
+EOF
+$ apt-get update
+$ apt-get install -y kubelet kubeadm kubectl
+teps for Kubernetes Master
+Step 1: Initialize kubeadm using the following command:
+$ kubeadm init –apiserver-advertise-address=<ip-address-of-master> --pod-network-cidr=192.168.0.0/16 --
+ignore-preflight-errors=NumCPU
+Step 2: In the output of the previous command, you will get a command, take this
+command and run it in the slave
+Step 3: On the master, exit to the normal user, and execute the following commands:
+$ mkdir -p $HOME/.kube
+$ sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+$ sudo chown $(id -u):$(id -g) $HOME/.kube/config
+Step 4: Next, let’s install the network plugin. Execute the following commands:
+$ kubectl apply -f https://docs.projectcalico.org/v3.3/getting-
+started/kubernetes/installation/hosted/rbac-kdd.yaml
+$ kubectl apply -f https://docs.projectcalico.org/v3.3/getting-
+started/kubernetes/installation/hosted/kubernetes-
+datastore/calico-networking/1.7/calico.yaml
+Step 5: The previous command will take some time to take effect. After 4-5 mins, try the
+following command, if both the nodes are in the ready state, Installation is successful!
+$ kubectl get nodes
