@@ -1,0 +1,49 @@
+NAGIOS INSTALLATION ON UBUNTU
+Nagios installation has been divided into three parts.DevOps Certification Course
+1. Installing Nagios on Master
+2. Installing NRPE on slave
+3. Installing Check_NRPE Plugin on Master
+Commands with green font represents master, white font terminal represents
+slave.
+Installing Nagios on Master
+Step 1: Update package index.
+Step 2: Run the following two commands after that.
+Step 3: Now, add user with the commands given below.
+You can add passwords and Enter the user information as shown below.
+Step 4: Run the following commands to complete the user adding process.
+Step 5: Now that we are set with the prerequisites, install Nagios Core as shown below.
+Step 6: Untar the file with the command shown below.
+Step 7: Enter the Nagios-4.4.2 directory.
+Step 8: Now with the given command make the required configurations.
+If the execution ends with the below given setup then we are good to go.
+Now we will make all the configuration work.
+If everything is perfect, we should see an output as shown below.
+Step 9: Run the following command.
+After that you will see the output as shown below:
+Step 10: Install init and run the following command.
+Step 11: Install config and run the following command.
+Step 12: Install commandmode as shown below:
+Step 13: Before moving ahead run the following commands to copy eventhandlers scripts under
+the libexec directory.
+Step 14: Create Apache configurationDevOps Certification Course
+Add the below given content to the configuration file.
+Step 15: Add a password as shown below, to complete apache configuration
+Step 16: Enable Apache configuration
+Step 17: Enable Apache configuration
+Step 18: Restart apache service.
+Step 19: Now go to the main directory.
+Step 20: To install the required Nagios plugin, download the plugins.
+Step 21: Untar the file.
+Step 22: Go inside Nagios-2.2.1 directory.
+Step 23: Compile the plugins and then complete the plugin installation process running the
+three commands given below:
+Before we can start using Nagios, we going to need to make a small change in the base
+configurations.
+Step 24: Go to the main directory.
+Step 25: Get inside /usr/local/nagios/etc/nagios.cfg
+Uncomment that line:
+Step 26: Make the following directory.
+Step 27: Verify the configuration before starting Nagios.
+Everything looks fine!
+Step 28: Start Nagios.
+If no error occurs move to the next step on the browser
