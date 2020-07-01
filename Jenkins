@@ -1,0 +1,16 @@
+JENKINS INSTALLATION ON UBUNTU
+Step 1: Update the system .
+$ sudo apt-get update
+Step 2: Install open jdk 8 in your system.
+$ sudo apt install openjdk-8-jdk
+Step 3: Run the following command to add the repository key to the system.
+wget -q -O - https://pkg.jenkins.io/debian/jenkins.io.key | sudo apt-key add -
+Step 4: The following command will append the Debian package repository address to your server's
+sources.list
+$ sudo sh -c 'echo deb http://pkg.jenkins.io/debian-stable binary/ >
+/etc/apt/sources.list.d/jenkins.list'
+Step 5: Again, update the system.
+$ sudo apt update
+Step 6: Install Jenkins.
+$ sudo apt install jenkins
+Congratulations! You have successfully setup Jenkins in your system.
